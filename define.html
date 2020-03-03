@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <p>{{age}}</p>
+        <p g-text="name"></p>
+        <input type="text" g-model="age">
+        <button @click="changeName">点我</button>
+        <div g-html="buttonStr"></div>
+    </div>
+    <script src="gj-compile.js"></script>
+    <script src="gj-vue.js"></script>
+    <script>
+        let vm = new GVue({
+            el: '#app',
+            data:{
+                name: 'NueView',
+                age: 5,
+                buttonStr:'<button>hello</button>'
+            },
+            methods:{
+                changeName(){
+                    this.name = "vuejs，来喽"
+                }
+            },
+            created(){
+                setTimeout(()=>{
+                    this.name = '我是created修改的'
+                },2000)
+            }
+        })
+    </script>
+</body>
+</html>
